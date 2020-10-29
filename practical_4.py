@@ -1,50 +1,32 @@
-class CircularQueue:
-
-    #Constructor
+class Stack():
     def __init__(self):
-        self.queue = list()
-        self.head = 0
-        self.tail = 0
-        self.maxSize = 8
+        self.items = [1,2,3,4,5]
 
-    #Adding elements to the queue
-    def enqueue(self,data):
-        if self.size() == self.maxSize-1:
-            return ("Queue Full!")
-        self.queue.append(data)
-        self.tail = (self.tail + 1) % self.maxSize
-        return True
+    
+    
+    def enque(self,item):
+        self.items.append(item)
+        print(item)
 
-    #Removing elements from the queue
-    def dequeue(self):
-        if self.size()==0:
-            return ("Queue Empty!") 
-        data = self.queue[self.head]
-        self.head = (self.head + 1) % self.maxSize
-        return data
+        
+    def deque(self):
+        b= self.items
+        b.pop()
+        print(b)
 
-    #Calculating the size of the queue
-    def size(self):
-        if self.tail>=self.head:
-            return (self.tail-self.head)
-        return (self.maxSize - (self.head-self.tail))
+    def traverse(self):
+        a = []
+        l = self.items
+        for i in l:
+            a.append(i)
+        print(a)
 
-q = CircularQueue()
-print(q.enqueue(1))
-print(q.enqueue(2))
-print(q.enqueue(3))
-print(q.enqueue(4))
-print(q.enqueue(5))
-print(q.enqueue(6))
-print(q.enqueue(7))
-print(q.enqueue(8))
-print(q.enqueue(9))
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
+s=Stack()
+
+print("Adding the element in the queue : ")
+s.enque(6)
+print("initial queue : ")
+s.traverse()
+
+print("After removing an element from the queue : ")
+s.deque()
