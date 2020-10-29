@@ -1,29 +1,39 @@
-print ("BINARY SEARCH METHOD\n")
-def bsm(arr,start,end,num):
-    if end>=start:
-        mid=start+(end-start)//2
-        if arr[mid]==x:
-            return mid
-        elif arr[mid]>x:
-            return bsm(arr,start,mid-1,x)
-        else:
-            return bsm(arr,mid+1,end,x)
-    else:
-        return -1
-arr=[10,27,36,49,58,69,70]
-x=int(input("Enter the number to be searched : "))
-result=bsm(arr,0,len(arr)-1,x)
-if result != -1:
-    print ("Number is found at ",result)
+list1 = [5,1,78,3,45,12,4,15,44,34,62,54]
+print("List = ",list1)
+n = len(list1)
+def bubbleSort():
+    print("Bubble Sorting")
+    for i in range(n-1): 
+        for j in range(0, n-i-1): 
+            if list1[j] > list1[j+1] : 
+                list1[j], list1[j+1] = list1[j+1], list1[j] 
+    print(list1)
+
+def SelectionSort():
+	print("Selection Sorting")
+	for i in range(n):
+		for j in range(i):
+			if list1[i]<list1[j]:
+				list1[i],list1[j] = list1[j],list1[i]
+	print(list1)
+	
+def InsertionSort():
+    print("Insertion Sorting")
+    for i in range(1, n): 
+        c = list1[i] 
+        j = i-1
+        while j >=0 and c < list1[j] : 
+                list1[j+1] = list1[j] 
+                j -= 1
+        list1[j+1] = c
+    print(list1)
+
+inp = input("Enter (B) for Bubble Sort, (S) for elsection Sort and (I) for Insertion Sort \n Enter here:")
+if inp=="B" or inp=="b":
+	bubbleSort()
+elif inp=="S" or inp=="s":
+	SelectionSort()
+elif inp=="I" or inp=="i":
+	InsertionSort()
 else:
-    print ("Number is not present\n")
-   
-print ("Linear Search\n")
-def linearsearch(arr, x):   
-   for i in range(len(arr)):       
-      if arr[i] == x:          
-        return i    
-   return -1 
-arr = ['t','u','t','o','r','i','a','l'] 
-x = input("enter character you want to search: ") 
-print("element found at index "+str(linearsearch(arr,x)))
+	print("Invalid input")
