@@ -1,31 +1,36 @@
 class Stack:
-    def _init_(self):
-        self.stack=[]
-
-    def add(self,data):
-
-        if data not in self.stack:
-            self.stack.append(data)
-            return True
+    
+    def __init__(self):
+        self.stack_arr = []
+        
+    def push(self,value):
+        self.stack_arr.append(value)
+        
+    def pop(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
         else:
-            return False
-
-    def top(self):
-        return self.stack[-1]
-
-    def remove(self):
-        if len(self.stack)<=0:
-            return ("No element in Stack")
-
+            self.stack_arr.pop()
+        
+    def get_head(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
         else:
-            return self.stack.pop()
-
-B=Stack()
-B.add('E')
-B.add('M')
-B.top()
-B.add('R')
-B.add('A')
-print(B.top())
-print(B.remove())
-print(B.remove())
+            return self.stack_arr[-1]
+    
+    def display(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
+        else:
+            print(self.stack_arr)
+    
+stack = Stack()
+stack.push(4)
+stack.push(5)
+stack.push(6)
+stack.pop()
+stack.display()
+stack.get_head()
