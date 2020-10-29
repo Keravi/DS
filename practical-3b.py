@@ -1,21 +1,53 @@
-def TowerOfHanoi(n , source, destination, auxiliary): 
+class Stack:
 
-    if n==1: 
+    def __init__(self):
+        self.stack_arr = []
 
-        print "Move disk 1 from source",source,"to destination",destination 
+    def push(self,value):
+        self.stack_arr.append(value)
 
-        return
+    def pop(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
+        else:
+            self.stack_arr.pop()
 
-    TowerOfHanoi(n-1, source, auxiliary, destination) 
+    def get_head(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
+        else:
+            return self.stack_arr[-1]
 
-    print "Move disk",n,"from source",source,"to destination",destination 
+    def display(self):
+        if len(self.stack_arr) == 0:
+            print('Stack is empty!')
+            return None
+        else:
+            print(self.stack_arr)
 
-    TowerOfHanoi(n-1, auxiliary, destination, source) 
+A = Stack()
+B = Stack()
+C = Stack()
+def towerOfHanoi(n, fromrod,to,temp):
+    if n == 1:
+        fromrod.pop()
+        to.push('disk 1')
+        if to.display() != None:
+            print(to.display())
 
-          
-# Driver code 
+    else:
 
-n = 4
+        towerOfHanoi(n-1, fromrod, temp, to)
+        fromrod.pop()
+        to.push(f'disk {n}')
+        if to.display() !=  None:
+            print(to.display())
+        towerOfHanoi(n-1, temp, to, fromrod)
 
-TowerOfHanoi(n,'A','B','C')  
-# A, C, B are the name of rods
+n = int(input('Enter the number of the disk in rod A : '))
+for i in  range(n):
+    A.push(f'disk {i+1} ')
+
+towerOfHanoi(n, A, C, B)
